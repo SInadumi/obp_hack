@@ -8,9 +8,9 @@ class WelcomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _WelcomeHeader(),
-              _WelcomeForm(),
-              _WelcomeFooter(),
+              WelcomeHeader(),
+              WelcomeForm(),
+              WelcomeFooter(),
             ],
           ),
         ),
@@ -19,7 +19,9 @@ class WelcomePage extends StatelessWidget {
   }
 }
 
-class _WelcomeHeader extends StatelessWidget {
+class WelcomeHeader extends StatelessWidget {
+  const WelcomeHeader({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final double height = 270;
@@ -49,12 +51,12 @@ class _WelcomeHeader extends StatelessWidget {
   }
 }
 
-class _WelcomeForm extends StatefulWidget {
+class WelcomeForm extends StatefulWidget {
   @override
-  State<_WelcomeForm> createState() => _WelcomeFormState();
+  State<WelcomeForm> createState() => _WelcomeFormState();
 }
 
-class _WelcomeFormState extends State<_WelcomeForm> {
+class _WelcomeFormState extends State<WelcomeForm> {
   String email = '';
   String passward = '';
 
@@ -115,7 +117,7 @@ class _WelcomeFormState extends State<_WelcomeForm> {
   }
 }
 
-class _WelcomeFooter extends StatelessWidget {
+class WelcomeFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
