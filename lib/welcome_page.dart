@@ -1,3 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/scheduler.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -51,20 +56,36 @@ class WelcomeHeader extends StatelessWidget {
   }
 }
 
+class WelcomeFooter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('footer text'),
+      ],
+    );
+  }
+}
+
 class WelcomeForm extends StatefulWidget {
   @override
-  State<WelcomeForm> createState() => _WelcomeFormState();
+  _WelcomeFormState createState() => _WelcomeFormState();
 }
 
 class _WelcomeFormState extends State<WelcomeForm> {
+  // メッセージ表示用
+  String infoText = '';
+  // 入力したメールアドレス・パスワード
   String email = '';
-  String passward = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        // メールアドレス入力
         TextFormField(
           decoration: InputDecoration(labelText: 'メールアドレス'),
           onChanged: (String value) {
@@ -73,57 +94,82 @@ class _WelcomeFormState extends State<WelcomeForm> {
             });
           },
         ),
+        // パスワード入力
         TextFormField(
           decoration: InputDecoration(labelText: 'パスワード'),
           obscureText: true,
           onChanged: (String value) {
             setState(() {
-              passward = value;
+              password = value;
             });
           },
         ),
         Container(
-          width: double.infinity,
-          child: ElevatedButton(
-            child: Text('ログイン'),
-            onPressed: () async {
-              try {
-                print('成功した場合の処理の記述');
-              } catch (e) {
-                setState(() {
-                  print('失敗した場合の処理の記述');
-                });
-              }
-            },
-          ),
+          padding: EdgeInsets.all(8),
+          // メッセージ表示
+          child: Text(infoText),
         ),
         Container(
           width: double.infinity,
+          // ユーザー登録ボタン
           child: ElevatedButton(
-            child: Text('登録'),
+            child: Text('ユーザー登録'),
             onPressed: () async {
               try {
-                print('成功した場合の処理の記述');
+                // メール/パスワードでユーザー登録
+                final FirebaseAuth auth = FirebaseAuth.instance;
+                final result = await auth.createUserWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                print("hhhj");
+                // ユーザー登録に成功した場合
+                // チャット画面に遷移＋ログイン画面を破棄
+                // await Navigator.of(context).pushReplacement(
+                //   MaterialPageRoute(builder: (context) {
+                //     return ChatPage(result.user!);
+                //   }),
+                // );
               } catch (e) {
+                // ユーザー登録に失敗した場合
                 setState(() {
-                  print('失敗した場合の処理の記述');
+                  infoText = "登録に失敗しました：${e.toString()}";
                 });
               }
             },
           ),
         ),
-      ],
-    );
-  }
-}
-
-class WelcomeFooter extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('footer text'),
+        const SizedBox(height: 8),
+        Container(
+          width: double.infinity,
+          // ログイン登録ボタン
+          child: OutlinedButton(
+            child: Text('ログイン'),
+            onPressed: () async {
+              try {
+                // メール/パスワードでログイン
+                final FirebaseAuth auth = FirebaseAuth.instance;
+                final result = await auth.signInWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                print("hhh");
+                // ログインに成功した場合
+                // チャット画面に遷移＋ログイン画面を破棄
+                // await Navigator.of(context).pushReplacement(
+                //   MaterialPageRoute(builder: (context) {
+                //     return ChatPage(result.user!);
+                //   }),
+                // );
+              } catch (e) {
+                // ログインに失敗した場合
+                setState(() {
+                  infoText = "ログインに失敗しました：${e.toString()}";
+                });
+              }
+            },
+          ),
+        ),
       ],
     );
   }
