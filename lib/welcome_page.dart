@@ -2,8 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:obp_hack/root_page.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:obp_hack/component/user_info.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -82,6 +85,7 @@ class _WelcomeFormState extends State<WelcomeForm> {
 
   @override
   Widget build(BuildContext context) {
+    final UserInfomation userinfo = Provider.of<UserInfomation>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -122,14 +126,15 @@ class _WelcomeFormState extends State<WelcomeForm> {
                   email: email,
                   password: password,
                 );
-                print("hhhj");
+                // ユーザ情報を更新
+                userinfo.setUser(result.user!);
                 // ユーザー登録に成功した場合
                 // チャット画面に遷移＋ログイン画面を破棄
-                // await Navigator.of(context).pushReplacement(
-                //   MaterialPageRoute(builder: (context) {
-                //     return ChatPage(result.user!);
-                //   }),
-                // );
+                await Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) {
+                    return HomePage(result.user!);
+                  }),
+                );
               } catch (e) {
                 // ユーザー登録に失敗した場合
                 setState(() {
@@ -153,14 +158,14 @@ class _WelcomeFormState extends State<WelcomeForm> {
                   email: email,
                   password: password,
                 );
-                print("hhh");
+                userinfo.setUser(result.user!);
                 // ログインに成功した場合
                 // チャット画面に遷移＋ログイン画面を破棄
-                // await Navigator.of(context).pushReplacement(
-                //   MaterialPageRoute(builder: (context) {
-                //     return ChatPage(result.user!);
-                //   }),
-                // );
+                await Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) {
+                    return RootPage();
+                  }),
+                );
               } catch (e) {
                 // ログインに失敗した場合
                 setState(() {

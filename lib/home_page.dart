@@ -1,10 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'component/main_header.dart';
 import 'component/main_footer.dart';
+import 'component/user_info.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final UserInfomation userinfo = Provider.of<UserInfomation>(context);
+    final User user = userinfo.user!;
+    print(user.email);
     return Container(
       padding: EdgeInsets.only(top: 48),
       child: Column(
