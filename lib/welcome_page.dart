@@ -132,7 +132,7 @@ class _WelcomeFormState extends State<WelcomeForm> {
                 // チャット画面に遷移＋ログイン画面を破棄
                 await Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) {
-                    return HomePage(result.user!);
+                    return RootPage();
                   }),
                 );
               } catch (e) {
