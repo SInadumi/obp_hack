@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PostList extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,21 +10,8 @@ class PostList extends StatelessWidget {
         children: [
           PostHeader(),
           PostForm(),
-          PostButton(),
+          PostFooter(),
         ],
-      ),
-    );
-  }
-}
-
-class PostList2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 48),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [Text('aa')],
       ),
     );
   }
@@ -72,25 +59,35 @@ class _PostFormState extends State<PostForm> {
   }
 }
 
-class PostButton extends StatefulWidget {
+class PostFooter extends StatelessWidget {
   @override
-  _PostButton createState() => _PostButton();
-}
-
-class _PostButton extends State<PostButton> {
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 24),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          primary: Colors.black,
-          padding: EdgeInsets.symmetric(horizontal: 48),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        ),
-        onPressed: () {},
-        child: Text('Done!', style: TextStyle(color: Colors.white)),
-      ),
+      padding: EdgeInsets.symmetric(vertical: 12),
+      child: Text('this is footer'),
     );
   }
 }
+
+// class PostButton extends StatefulWidget {
+//   @override
+//   _PostButton createState() => _PostButton();
+// }
+
+// class _PostButton extends State<PostButton> {
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: EdgeInsets.symmetric(vertical: 24),
+//       child: ElevatedButton(
+//         style: ElevatedButton.styleFrom(
+//           primary: Colors.black,
+//           padding: EdgeInsets.symmetric(horizontal: 48),
+//           shape:
+//               RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+//         ),
+//         onPressed: () {},
+//         child: Text('Done!', style: TextStyle(color: Colors.white)),
+//       ),
+//     );
+//   }
+// }
