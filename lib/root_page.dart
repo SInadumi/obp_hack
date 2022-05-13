@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:obp_hack/home.dart';
+import 'package:obp_hack/home_page.dart';
+import 'package:obp_hack/post_review_page.dart';
+import 'package:obp_hack/profile_page.dart';
+import 'package:obp_hack/other_review_page.dart';
 
 class RootPage extends StatelessWidget {
   // this widget is the root of homepage
@@ -26,9 +29,9 @@ class _RootPageRootFormState extends State<RootPageRootForm> {
   */
   int _currentIndex = 0;
   var _PageWidgets = <Widget>[
-    PostList(),
-    PostList2(),
-    PostList(),
+    HomePage(),
+    ProfilePage(),
+    OtherReviewPage(),
   ];
 
   void _onItemTapped(index) {
@@ -40,17 +43,21 @@ class _RootPageRootFormState extends State<RootPageRootForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // TODO : 各画面のAppBarをこの場所に置いておく
       body: _PageWidgets[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
+          // To home_page Icon
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
             label: 'home',
           ),
+          // To profile_page Icon
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: 'My Page',
           ),
+          // To other_review_page Icon
           BottomNavigationBarItem(
             icon: Icon(Icons.face),
             label: 'Other people review',

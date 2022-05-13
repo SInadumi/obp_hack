@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'component/main_header.dart';
+import 'component/main_footer.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -8,33 +10,21 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          PostHeader(),
-          PostForm(),
-          PostFooter(),
+          MainHeader(),
+          HomeForm(),
+          MainFooter(),
         ],
       ),
     );
   }
 }
 
-class PostHeader extends StatelessWidget {
+class HomeForm extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text('Icon'),
-        Text('Read1er'),
-      ],
-    );
-  }
+  _HomeFormState createState() => _HomeFormState();
 }
 
-class PostForm extends StatefulWidget {
-  @override
-  _PostFormState createState() => _PostFormState();
-}
-
-class _PostFormState extends State<PostForm> {
+class _HomeFormState extends State<HomeForm> {
   var ProfileContainer = [
     Container(
       color: Colors.blue,
@@ -58,36 +48,3 @@ class _PostFormState extends State<PostForm> {
     );
   }
 }
-
-class PostFooter extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12),
-      child: Text('this is footer'),
-    );
-  }
-}
-
-// class PostButton extends StatefulWidget {
-//   @override
-//   _PostButton createState() => _PostButton();
-// }
-
-// class _PostButton extends State<PostButton> {
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.symmetric(vertical: 24),
-//       child: ElevatedButton(
-//         style: ElevatedButton.styleFrom(
-//           primary: Colors.black,
-//           padding: EdgeInsets.symmetric(horizontal: 48),
-//           shape:
-//               RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-//         ),
-//         onPressed: () {},
-//         child: Text('Done!', style: TextStyle(color: Colors.white)),
-//       ),
-//     );
-//   }
-// }
