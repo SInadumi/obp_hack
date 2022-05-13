@@ -21,16 +21,17 @@ class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<UserInfomation>(
-        create: (context) => UserInfomation(),
-        child: MaterialApp(
-          // アプリ名
-          title: 'ChatApp',
-          theme: ThemeData(
-            // テーマカラー
-            primarySwatch: Colors.blue,
-          ),
-          // ログイン画面を表示
-          home: WelcomePage(),
-        ));
+      create: (context) => UserInfomation(),
+      child: MaterialApp(
+        // アプリ名
+        title: 'ChatApp',
+        theme: ThemeData(
+          // テーマカラー
+          primarySwatch: Colors.blue,
+        ),
+        // ログイン画面を表示
+        home: WelcomePage(),
+      ),
+    );
   }
 }
