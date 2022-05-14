@@ -18,7 +18,6 @@ class WelcomePage extends StatelessWidget {
             children: [
               WelcomeHeader(),
               WelcomeForm(),
-              WelcomeFooter(),
             ],
           ),
         ),
@@ -32,41 +31,17 @@ class WelcomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = 270;
+    final double height = 300;
     return Container(
       height: height,
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(8),
-                  child: Text('LOGO'),
-                ),
-                Container(
-                  padding: EdgeInsets.all(8),
-                  child: Text('template text texmplate text template text'),
-                ),
-              ],
-            ),
-          ),
-        ],
+      child: Padding(
+        padding: EdgeInsets.only(top: 90),
+        child: Column(
+          children: [
+            Image.asset('assets/logo_middle_size.png'),
+          ],
+        ),
       ),
-    );
-  }
-}
-
-class WelcomeFooter extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('footer text'),
-      ],
     );
   }
 }
