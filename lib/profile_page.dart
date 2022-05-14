@@ -37,12 +37,12 @@ class _ProfileFormState extends State<ProfileForm> {
             children: [
               SizedBox(height: 10),
               buildName(user),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               ProfileWidget(
                 imagePath: user.imagePath,
                 onClicked: () async {},
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               buildReview(user),
               SizedBox(height: 10),
               buildPostButton(),

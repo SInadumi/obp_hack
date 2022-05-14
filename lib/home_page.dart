@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:obp_hack/post_review_page.dart';
 import 'component/main_header.dart';
 import 'component/user_info.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +30,8 @@ class HomeForm extends StatefulWidget {
 
 class _HomeFormState extends State<HomeForm> {
   var user = [
-    UserPreferences.myUser,
     UserPreferences.otherUser,
+    UserPreferences.otherUser2,
   ];
 
   @override
@@ -39,7 +40,7 @@ class _HomeFormState extends State<HomeForm> {
       child: Expanded(
         child: PageView.builder(
           itemBuilder: (context, index) {
-            return buildUserContainer(user[index]);
+            return buildUserContainer(context, user[index]);
           },
           itemCount: user.length,
         ),
@@ -47,7 +48,7 @@ class _HomeFormState extends State<HomeForm> {
     );
   }
 
-  Widget buildUserContainer(User2 user) => Container(
+  Widget buildUserContainer(BuildContext context, User2 user) => Container(
         child: Expanded(
           child: Center(
             child: Column(
@@ -61,7 +62,7 @@ class _HomeFormState extends State<HomeForm> {
                 SizedBox(height: 20),
                 buildReview(user),
                 SizedBox(height: 10),
-                buildButtonsContainer(),
+                buildButtonsContainer(context),
               ],
             ),
           ),
@@ -106,7 +107,7 @@ class _HomeFormState extends State<HomeForm> {
           ],
         ),
       );
-  Widget buildButtonsContainer() => Row(
+  Widget buildButtonsContainer(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           OutlinedButton.icon(
@@ -115,7 +116,14 @@ class _HomeFormState extends State<HomeForm> {
             label: Text('Skip'),
           ),
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PostPage(),
+                ),
+              ),
+            },
             icon: Icon(Icons.favorite_border, color: Colors.pink),
             label: Text('Like'),
           ),

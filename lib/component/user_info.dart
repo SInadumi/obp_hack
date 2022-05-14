@@ -32,29 +32,29 @@ class User2 {
 // Test User Preferences
 class UserPreferences {
   static const myUser = User2(
-    imagePath: 'https://illustimage.com/photo/dl/2503.png?20161226',
+    imagePath:
+        'https://images-na.ssl-images-amazon.com/images/I/41xyGT6vMcS._SX348_BO1,204,203,200_.jpg',
     name: 'Shun Inadumi',
     email: 'inadumi@gmail.com',
-    booktitle: '1Q84',
-    review:
-        'test review test review test review test reviewtest review test review test review test reviewtest review',
+    booktitle: '三体',
+    review: 'これを書いた人の知識はとんでもないなと思いながら読みました!これぞSFという感じがして、好きな小説です。',
   );
 
   static const otherUser = User2(
-    imagePath: 'https://illustimage.com/photo/2504.png?20161226',
+    imagePath:
+        'https://images-na.ssl-images-amazon.com/images/I/71BjKgQp1+L.jpg',
     name: 'Ryoto Minami',
     email: 'minami@gmail.com',
     booktitle: '旅のラゴス',
-    review:
-        'test review test review test review test reviewtest review test review test review test reviewtest review',
+    review: 'ドラゴンクエストⅤの元ネタになった小説らしいです。間違いなく名作です!',
   );
 
   static const otherUser2 = User2(
-    imagePath: 'https://illustimage.com/photo/2504.png?20161226',
+    imagePath:
+        'https://t4.ftcdn.net/jpg/04/07/08/83/360_F_407088358_Te8jgvLhuGLTHGahkhuzWzd0uttgznVJ.jpg',
     name: 'Giovanni',
     email: 'giovanni@gmail.com',
     booktitle: '銀河鉄道の夜',
-    review:
-        'test review test review test review test reviewtest review test review test review test reviewtest review',
+    review: 'オブジェクションの果てに喜劇役者のどんでん返し。賢治、お前ってやつは真の小説家だよ。',
   );
 }

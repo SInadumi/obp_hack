@@ -13,7 +13,6 @@ class RootPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserInfomation userinfo = Provider.of<UserInfomation>(context);
     final User user = userinfo.user!;
-    print(user.email);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Read1er Home',
