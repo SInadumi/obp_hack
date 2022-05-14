@@ -36,7 +36,7 @@ class _ProfileFormState extends State<ProfileForm> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               buildName(user),
               SizedBox(height: 20),
               ProfileWidget(
@@ -46,7 +46,7 @@ class _ProfileFormState extends State<ProfileForm> {
               SizedBox(height: 20),
               buildReview(user),
               SizedBox(height: 10),
-              postButton(),
+              buildPostButton(),
             ],
           ),
         ),
@@ -92,8 +92,8 @@ class _ProfileFormState extends State<ProfileForm> {
           ],
         ),
       );
-  Widget postButton() => Padding(
-        padding: EdgeInsets.symmetric(vertical: 12),
+  Widget buildPostButton() => Padding(
+        padding: EdgeInsets.symmetric(vertical: 5),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             primary: Colors.black.withOpacity(0.2),

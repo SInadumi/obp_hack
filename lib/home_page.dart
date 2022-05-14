@@ -56,7 +56,7 @@ class _HomeFormState extends State<HomeForm> {
           child: Center(
             child: Column(
               children: [
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 buildName(user),
                 SizedBox(height: 20),
                 ProfileWidget(
@@ -65,6 +65,7 @@ class _HomeFormState extends State<HomeForm> {
                 SizedBox(height: 20),
                 buildReview(user),
                 SizedBox(height: 10),
+                buildButtonsContainer(),
               ],
             ),
           ),
@@ -107,6 +108,21 @@ class _HomeFormState extends State<HomeForm> {
             ),
           ],
         ),
+      );
+  Widget buildButtonsContainer() => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          OutlinedButton.icon(
+            onPressed: () => {},
+            icon: Icon(Icons.skip_next, color: Colors.grey),
+            label: Text('Skip'),
+          ),
+          OutlinedButton.icon(
+            onPressed: () {},
+            icon: Icon(Icons.favorite_border, color: Colors.pink),
+            label: Text('Like'),
+          ),
+        ],
       );
 }
 

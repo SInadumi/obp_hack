@@ -16,7 +16,6 @@ class PostReviewPage extends StatelessWidget {
         children: [
           MainHeader(),
           PostReviewForm(),
-          PostButton(),
         ],
       ),
     );
@@ -38,7 +37,7 @@ class _PostReviewFormState extends State<PostReviewForm> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               buildName(otheruser),
               SizedBox(height: 20),
               ProfileWidget(
@@ -48,7 +47,7 @@ class _PostReviewFormState extends State<PostReviewForm> {
               // TODO : 自分が書いたレビューのテキストを保持したい
               buildReview(myuser),
               SizedBox(height: 10),
-              postButton(),
+              buildPostButton(),
             ],
           ),
         ),
@@ -94,8 +93,8 @@ class _PostReviewFormState extends State<PostReviewForm> {
           ],
         ),
       );
-  Widget postButton() => Padding(
-        padding: EdgeInsets.symmetric(vertical: 12),
+  Widget buildPostButton() => Padding(
+        padding: EdgeInsets.symmetric(vertical: 5),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             primary: Colors.black.withOpacity(0.2),
@@ -104,32 +103,12 @@ class _PostReviewFormState extends State<PostReviewForm> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
           ),
           onPressed: () {},
-          child: Text('Done!', style: TextStyle(color: Colors.white)),
+          child: Text(
+            'Done!',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       );
-}
-
-class PostButton extends StatefulWidget {
-  @override
-  _PostButton createState() => _PostButton();
-}
-
-class _PostButton extends State<PostButton> {
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 24),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          primary: Colors.black,
-          padding: EdgeInsets.symmetric(horizontal: 48),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        ),
-        onPressed: () {},
-        child: Text('Done!', style: TextStyle(color: Colors.white)),
-      ),
-    );
-  }
 }
 
 class ProfileWidget extends StatelessWidget {
