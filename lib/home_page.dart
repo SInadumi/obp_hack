@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserInfomation userinfo = Provider.of<UserInfomation>(context);
     final User user = userinfo.user!;
-    print(user.email);
     return Container(
       padding: EdgeInsets.only(top: 48),
       child: Column(
@@ -87,6 +86,7 @@ class _HomeFormState extends State<HomeForm> {
           ),
         ],
       );
+
   Widget buildReview(User2 user) => Container(
         padding: EdgeInsets.symmetric(horizontal: 48),
         child: Column(

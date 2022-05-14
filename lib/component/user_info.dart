@@ -19,7 +19,6 @@ class User2 {
   final String email;
   final String booktitle;
   final String review;
-  final bool isDarkMode;
 
   const User2({
     required this.imagePath,
@@ -27,7 +26,6 @@ class User2 {
     required this.email,
     required this.booktitle,
     required this.review,
-    required this.isDarkMode,
   });
 }
 
@@ -40,7 +38,6 @@ class UserPreferences {
     booktitle: '1Q84',
     review:
         'test review test review test review test reviewtest review test review test review test reviewtest review',
-    isDarkMode: false,
   );
 
   static const otherUser = User2(
@@ -50,6 +47,14 @@ class UserPreferences {
     booktitle: '旅のラゴス',
     review:
         'test review test review test review test reviewtest review test review test review test reviewtest review',
-    isDarkMode: false,
+  );
+
+  static const otherUser2 = User2(
+    imagePath: 'https://illustimage.com/photo/2504.png?20161226',
+    name: 'Giovanni',
+    email: 'giovanni@gmail.com',
+    booktitle: '銀河鉄道の夜',
+    review:
+        'test review test review test review test reviewtest review test review test review test reviewtest review',
   );
 }

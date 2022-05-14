@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:obp_hack/component/user_info.dart';
 import 'component/main_header.dart';
 import 'component/main_footer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,24 +28,33 @@ class OtherReviewForm extends StatefulWidget {
 }
 
 class _OtherReviewFormState extends State<OtherReviewForm> {
-  var ProfileContainer = [
-    Container(
-      color: Colors.yellow,
-    ),
-    Container(
-      color: Colors.green,
-    ),
-  ];
+  var myuser = UserPreferences.myUser;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Expanded(
-        child: PageView.builder(
-          itemBuilder: (context, index) {
-            return ProfileContainer[index];
+        child: FutureBuilder<QuerySnapshot>(
+          future: FirebaseFirestore.instance.collection(myuser.name).get(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final List<DocumentSnapshot> documents = snapshot.data!.docs;
+              return ListView(
+                children: documents.map((documents) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(documents['from']),
+                      subtitle: Text(documents['text']),
+                    ),
+                  );
+                }).toList(),
+              );
+            } else {
+              return Center(
+                child: Text('読込中...'),
+              );
+            }
           },
-          itemCount: ProfileContainer.length,
         ),
       ),
     );
