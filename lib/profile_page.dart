@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'component/main_header.dart';
-import 'component/main_footer.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:obp_hack/component/user_info.dart';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -120,6 +119,26 @@ class ProfileWidget extends StatelessWidget {
     required this.onClicked,
   }) : super(key: key);
 
+  void _upload() async {
+    File? file;
+    final ImagePicker _picker = ImagePicker();
+    // Pick an image
+    // TODO : 一部の画像が取れないバグがあり
+    final image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      file = File(image.path);
+    } else {
+      // No selected
+    }
+    print(file);
+    FirebaseStorage storage = FirebaseStorage.instance;
+    try {
+      await storage.ref("UL/upload-pic.png").putFile(file!);
+    } catch (e) {
+      // Execption catched
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme.primary;
@@ -163,7 +182,6 @@ class ProfileWidget extends StatelessWidget {
             fit: BoxFit.cover,
             width: 256,
             height: 256,
-            child: InkWell(onTap: onClicked),
           ),
         ),
       ),
@@ -176,10 +194,13 @@ class ProfileWidget extends StatelessWidget {
         child: buildCircle(
           color: color,
           all: 8,
-          child: Icon(
-            Icons.photo_camera,
-            color: Colors.white,
-            size: 20,
+          child: FloatingActionButton(
+            onPressed: _upload,
+            child: Icon(
+              Icons.photo_camera,
+              color: Colors.white,
+              size: 20,
+            ),
           ),
         ),
       );
