@@ -15,7 +15,6 @@ class OtherReviewPage extends StatelessWidget {
         children: [
           MainHeader(),
           OtherReviewForm(),
-          MainFooter(),
         ],
       ),
     );

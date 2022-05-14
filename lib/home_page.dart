@@ -20,7 +20,6 @@ class HomePage extends StatelessWidget {
         children: [
           MainHeader(),
           HomeForm(),
-          MainFooter(),
         ],
       ),
     );
@@ -33,13 +32,9 @@ class HomeForm extends StatefulWidget {
 }
 
 class _HomeFormState extends State<HomeForm> {
-  var ProfileContainer = [
-    Container(
-      color: Colors.blue,
-    ),
-    Container(
-      color: Colors.red,
-    ),
+  var user = [
+    UserPreferences.myUser,
+    UserPreferences.otherUser,
   ];
 
   @override
@@ -48,9 +43,120 @@ class _HomeFormState extends State<HomeForm> {
       child: Expanded(
         child: PageView.builder(
           itemBuilder: (context, index) {
-            return ProfileContainer[index];
+            return buildUserContainer(user[index]);
           },
-          itemCount: ProfileContainer.length,
+          itemCount: user.length,
+        ),
+      ),
+    );
+  }
+
+  Widget buildUserContainer(User2 user) => Container(
+        child: Expanded(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(height: 20),
+                buildName(user),
+                SizedBox(height: 20),
+                ProfileWidget(
+                  imagePath: user.imagePath,
+                ),
+                SizedBox(height: 20),
+                buildReview(user),
+                SizedBox(height: 10),
+              ],
+            ),
+          ),
+        ),
+      );
+  Widget buildName(User2 user) => Column(
+        children: [
+          Text(
+            user.name,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+          ),
+          SizedBox(height: 4),
+          Text(
+            user.email,
+            style: TextStyle(color: Colors.grey),
+          ),
+        ],
+      );
+  Widget buildReview(User2 user) => Container(
+        padding: EdgeInsets.symmetric(horizontal: 48),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              user.booktitle,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              user.review,
+              style: TextStyle(
+                fontSize: 16,
+                height: 1.4,
+              ),
+            ),
+          ],
+        ),
+      );
+}
+
+// 画像を表示するウィジェット
+class ProfileWidget extends StatelessWidget {
+  final String imagePath;
+  const ProfileWidget({
+    Key? key,
+    required this.imagePath,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primary;
+    return Center(
+      child: buildImage(),
+    );
+  }
+
+  Widget buildImage() {
+    final image = NetworkImage(imagePath);
+    return Container(
+      width: 256,
+      height: 256,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(10, 10),
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 20,
+          ),
+          BoxShadow(
+            offset: Offset(-10, -10),
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 20,
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: Material(
+          color: Colors.transparent,
+          child: Ink.image(
+            image: image,
+            fit: BoxFit.cover,
+            width: 256,
+            height: 256,
+          ),
         ),
       ),
     );

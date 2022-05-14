@@ -34,11 +34,20 @@ class User2 {
 // Test User Preferences
 class UserPreferences {
   static const myUser = User2(
-    imagePath:
-        'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=333&q=80',
+    imagePath: 'https://illustimage.com/photo/dl/2503.png?20161226',
     name: 'Shun Inadumi',
     email: 'inadumi@gmail.com',
     booktitle: '1Q84',
+    review:
+        'test review test review test review test reviewtest review test review test review test reviewtest review',
+    isDarkMode: false,
+  );
+
+  static const otherUser = User2(
+    imagePath: 'https://illustimage.com/photo/2504.png?20161226',
+    name: 'Ryoto Minami',
+    email: 'minami@gmail.com',
+    booktitle: '旅のラゴス',
     review:
         'test review test review test review test reviewtest review test review test review test reviewtest review',
     isDarkMode: false,
