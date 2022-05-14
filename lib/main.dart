@@ -1,10 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:obp_hack/welcome_page.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:obp_hack/root_page.dart';
 import 'package:provider/provider.dart';
 import 'package:obp_hack/component/user_info.dart';
 
