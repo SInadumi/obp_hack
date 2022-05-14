@@ -1,6 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:obp_hack/component/user_info.dart';
 import 'component/main_header.dart';
+import 'package:obp_hack/root_page.dart';
+
+class PostPage extends StatelessWidget {
+  PostPage();
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'post page',
+      theme: ThemeData.light(),
+      home: PostPageForm(),
+    );
+  }
+}
+
+class PostPageForm extends StatefulWidget {
+  @override
+  _PostPageFormState createState() => _PostPageFormState();
+}
+
+class _PostPageFormState extends State<PostPageForm> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PostReviewPage(),
+    );
+  }
+}
 
 class PostReviewPage extends StatelessWidget {
   @override
@@ -42,8 +69,9 @@ class _PostReviewFormState extends State<PostReviewForm> {
               SizedBox(height: 20),
               // TODO : 自分が書いたレビューのテキストを保持したい
               buildReview(myuser),
-              SizedBox(height: 10),
+              SizedBox(height: 5),
               buildPostButton(),
+              buildBackButton(),
             ],
           ),
         ),
@@ -63,7 +91,10 @@ class _PostReviewFormState extends State<PostReviewForm> {
           SizedBox(height: 4),
           Text(
             user.email,
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 16,
+            ),
           ),
         ],
       );
@@ -73,14 +104,14 @@ class _PostReviewFormState extends State<PostReviewForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              user.booktitle,
+              'Your Review',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              user.review,
+            TextField(
+              maxLength: 50,
               style: TextStyle(
                 fontSize: 16,
                 height: 1.4,
@@ -101,6 +132,29 @@ class _PostReviewFormState extends State<PostReviewForm> {
           onPressed: () {},
           child: Text(
             'Done!',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      );
+  Widget buildBackButton() => Padding(
+        padding: EdgeInsets.symmetric(vertical: 5),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.blue.withOpacity(0.2),
+            padding: EdgeInsets.symmetric(horizontal: 48),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+          ),
+          onPressed: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => RootPage(),
+              ),
+            ),
+          },
+          child: Text(
+            'Back',
             style: TextStyle(color: Colors.white),
           ),
         ),
