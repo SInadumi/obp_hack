@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "875684299064",
+    "project_id": "bop-media-1",
+    "storage_bucket": "bop-media-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875684299064:android:ee9ac76563cd96270d01cd",
+        "android_client_info": {
+          "package_name": "com.example.obp_hack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875684299064-s27accjn479jlc23cl7d4rj5v70b4prr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOcy6iMsIC1K60J7j1xFRCnis4Fg2-5sw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875684299064-s27accjn479jlc23cl7d4rj5v70b4prr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "875684299064-cairg9rjoov63ofl3sg2d4b3aknsqr7g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.obpHack"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
